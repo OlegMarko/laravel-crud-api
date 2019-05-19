@@ -18,11 +18,6 @@ class CreateStudentsTable extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->unsignedSmallInteger('age');
-            $table->unsignedBigInteger('class_id');
-            $table->foreign('class_id')
-                ->references('id')
-                ->on('classes')
-                ->onDelete('cascade');
             $table->timestamps();
         });
     }

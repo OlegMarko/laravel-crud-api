@@ -27,7 +27,7 @@ class ClassesRequest extends FormRequest
             'title' => 'required|string|max:255',
             'day' => 'required|date_format:Y-m-d',
             'time' => 'required|date_format:H:i',
-            'teacher_id' => 'required|exists:teachers,id'
+            'teacher_id' => 'required|integer|exists:teachers,id'
         ];
     }
 }

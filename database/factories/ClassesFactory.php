@@ -9,8 +9,8 @@ use App\Models\Teacher;
 $factory->define(Classes::class, function (Faker $faker) {
     return [
         'title' => $faker->sentence(),
-        'day' => $faker->date($format = 'Y-m-d', $max = 'now'),
-        'time' => $faker->date($format = 'H:i:s', $max = 'now'),
-        'teacher_id' => Teacher::all()->random(1)[0]->id
+        'day' => $faker->dateTimeBetween($startDate = 'now', $endDate = '+5 days'),
+        'time' => $faker->date($format = 'H:i', $max = 'now'),
+        'teacher_id' => Teacher::all()->random(1)[0]
     ];
 });

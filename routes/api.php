@@ -13,12 +13,16 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
 Route::group(['namespace' => 'Api'], function () {
     Route::apiResource('students', 'StudentController');
+    Route::get('students/{student}/classes', 'StudentController@getClasses');
+
+    Route::get('classes/schedule', 'ClassesController@getDailySchedule');
     Route::apiResource('classes', 'ClassesController');
+    Route::get('classes/{class}/students', 'ClassesController@getStudents');
+
     Route::apiResource('teachers', 'TeacherController');
+
+    Route::post('/student-classes', 'StudentClassesController@addStudentToClass');
+    Route::delete('/student-classes', 'StudentClassesController@removeStudentFromClass');
 });

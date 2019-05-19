@@ -7,6 +7,8 @@ use App\Http\Resources\ClassesCollection;
 use App\Models\Classes;
 use App\Http\Resources\ClassesResource;
 use App\Http\Requests\ClassesRequest;
+use App\Http\Resources\ClassesDailyScheduleCollection;
+use App\Http\Resources\StudentCollection;
 
 class ClassesController extends Controller
 {
@@ -73,5 +75,24 @@ class ClassesController extends Controller
         $class->delete();
 
         return new ClassesResource($class);
+    }
+
+    public function getStudents(Classes $class)
+    {
+        return new StudentCollection($class->students);
+    }
+
+    public function getStudentsOnClassAsGroup()
+    {
+        // ToDo: ??
+    }
+
+    public function getDailySchedule()
+    {
+        $schedule = Classes::orderBy('day', 'ASC')
+            ->orderBy('time', 'ASC')
+            ->paginate(3);
+
+        return new ClassesDailyScheduleCollection($schedule);
     }
 }

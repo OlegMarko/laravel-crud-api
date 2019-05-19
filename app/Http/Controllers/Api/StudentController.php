@@ -7,6 +7,7 @@ use App\Http\Resources\StudentCollection;
 use App\Models\Student;
 use App\Http\Resources\StudentResource;
 use App\Http\Requests\StudentRequest;
+use App\Http\Resources\ClassesCollection;
 
 class StudentController extends Controller
 {
@@ -73,5 +74,10 @@ class StudentController extends Controller
         $student->delete();
 
         return new StudentResource($student);
+    }
+
+    public function getClasses(Student $student)
+    {
+        return new ClassesCollection($student->classes);
     }
 }

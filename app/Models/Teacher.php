@@ -13,7 +13,7 @@ class Teacher extends Model
      */
     protected $guarded = [];
 
-    public function user()
+    public function class()
     {
         return $this->belongsTo(Classes::class);
     }

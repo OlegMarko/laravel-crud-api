@@ -39,13 +39,13 @@ class Classes extends Model
         $this->attributes['time'] = Carbon::createFromFormat('H:i', $date)->format('H:i:s');
     }
 
-    public function user()
+    public function students()
     {
-        return $this->belongsTo(Student::class);
+        return $this->belongsToMany(Student::class, 'student_classes');
     }
 
-    public function classes()
+    public function teacher()
     {
-        return $this->hasMany(Teacher::class);
+        return $this->hasOne(Teacher::class);
     }
 }
