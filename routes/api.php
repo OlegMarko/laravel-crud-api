@@ -14,6 +14,8 @@ use Illuminate\Http\Request;
 */
 
 Route::group(['namespace' => 'Api'], function () {
+    Route::get('/', 'HomeController@index');
+
     Route::apiResource('students', 'StudentController');
     Route::get('students/{student}/classes', 'StudentController@getClasses');
 
