@@ -21,17 +21,22 @@ class Classes extends Model
      */
     protected $casts = [
         'day' => 'date:Y-m-d',
-        'time' => 'date:hh:mm'
+        'time' => 'time:hh:mm'
     ];
 
-    public function getDayAtAttribute($date)
+    public function getDayAttribute($date)
     {
-        return Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('Y-m-d');
+        return Carbon::createFromFormat('Y-m-d', $date)->format('Y-m-d');
     }
 
-    public function getTimeAtAttribute($date)
+    public function getTimeAttribute($date)
     {
-        return Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('hh:mm');
+        return Carbon::createFromFormat('H:i:s', $date)->format('H:i');
+    }
+
+    public function setTimeAttribute($date)
+    {
+        $this->attributes['time'] = Carbon::createFromFormat('H:i', $date)->format('H:i:s');
     }
 
     public function user()
