@@ -16,6 +16,7 @@
 - `docker-compose exec php-fpm composer install`
 - `docker-compose exec php-fpm php artisan key:generate`
 - `docker-compose exec php-fpm php artisan migrate --seed`
+- `docker-compose exec php-fpm php artisan l5-swagger:generate`
 
 ## Run app with local
 - `git clone https://github.com/OlegMarko/laravel-crud-api.git`
@@ -24,5 +25,6 @@
 - `cp .env.exaple .env`
 - `php artisan key:generate`
 - `php artisan migrate --seed`
+- `php artisan l5-swagger:generate`
 - `php artisan serve --port=8000`
     

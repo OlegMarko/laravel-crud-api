@@ -38,3 +38,4 @@ services:
       - DB_DATABASE=lar_crud_api
       - DB_USERNAME=root
       - DB_PASSWORD=pass
+      - SWAGGER_VERSION=2.0

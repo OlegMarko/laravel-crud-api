@@ -1,0 +1,289 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "simple CRUD api",
+        "version": "1.0"
+    },
+    "basePath": "/api",
+    "paths": {
+        "/classes": {
+            "get": {
+                "tags": [
+                    "Classes"
+                ],
+                "summary": "All Classes",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Number of page.",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "500": {
+                        "description": "internal server error"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Classes"
+                ],
+                "summary": "Create Class",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "title",
+                        "in": "formData",
+                        "description": "Class Name",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "day",
+                        "in": "formData",
+                        "description": "Day",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "time",
+                        "in": "formData",
+                        "description": "Starting hours",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "teacher_id",
+                        "in": "formData",
+                        "description": "Teacher",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "successful operation"
+                    },
+                    "422": {
+                        "description": "validation fail"
+                    },
+                    "500": {
+                        "description": "internal server error"
+                    }
+                }
+            }
+        },
+        "/classes/{class}": {
+            "get": {
+                "tags": [
+                    "Classes"
+                ],
+                "summary": "Get Class by Id",
+                "parameters": [
+                    {
+                        "name": "class",
+                        "in": "path",
+                        "description": "Class Id",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "404": {
+                        "description": "resource not found"
+                    },
+                    "500": {
+                        "description": "internal server error"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Classes"
+                ],
+                "summary": "Update Class",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "class",
+                        "in": "path",
+                        "description": "Class Id",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "title",
+                        "in": "formData",
+                        "description": "Class Name",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "day",
+                        "in": "formData",
+                        "description": "Day",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "time",
+                        "in": "formData",
+                        "description": "Starting hours",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "teacher_id",
+                        "in": "formData",
+                        "description": "Teacher",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "404": {
+                        "description": "resource not found"
+                    },
+                    "422": {
+                        "description": "validation fail"
+                    },
+                    "500": {
+                        "description": "internal server error"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Classes"
+                ],
+                "summary": "Remove Class",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "class",
+                        "in": "path",
+                        "description": "Class Id",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "404": {
+                        "description": "resource not found"
+                    },
+                    "422": {
+                        "description": "validation fail"
+                    },
+                    "500": {
+                        "description": "internal server error"
+                    }
+                }
+            }
+        },
+        "/classes/{class}/students": {
+            "get": {
+                "tags": [
+                    "Classes"
+                ],
+                "summary": "Get students in the Class",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "class",
+                        "in": "path",
+                        "description": "Class Id",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "404": {
+                        "description": "resource not found"
+                    },
+                    "422": {
+                        "description": "validation fail"
+                    },
+                    "500": {
+                        "description": "internal server error"
+                    }
+                }
+            }
+        },
+        "/classes/schedule": {
+            "get": {
+                "tags": [
+                    "Classes"
+                ],
+                "summary": "Get daily Classes schedule",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Number of page.",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "500": {
+                        "description": "internal server error"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {},
+    "tags": [
+        {
+            "name": "Classes",
+            "description": "Operations about Classes"
+        }
+    ]
+}
